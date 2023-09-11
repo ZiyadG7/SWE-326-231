@@ -1,17 +1,23 @@
-body {background-color: #4d1cb6a1;}
+body {background-color: black;
+        color: white;}
 h1, h2 {
     font-family: Arial Black;
     text-align: center;
     }
     
 p {
-    font-family: Comic sans MS, Arial;
+    font-family: comic sans MS, Arial;
     text-align: center;
     }
 a{
-    color: blue;
+    color: royalblue;
 }
-a:hover{
-    color:blueviolet;
+a:visited{
+    color: lightblue;
 }
-    
+footer{
+    font-family: sans-serif;
+}
+/*
+to get childern of a node you use the parent space child
+eg. nav li targets every list item of child nav*/
