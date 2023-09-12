@@ -4,21 +4,33 @@
     <meta charset="UTF-8">
     <meta name="description" content="Contact Ziyad Alghanam "/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <a href="index.html">Go Back</a>
+    <title>Contact Me</title>
 </head>
 <body>
-    <h2>>Email: <a href = "mailto: ZiyadAlghanam">ZiyadAlghanam@gmail.com</a></h2>
-    <h2>>Phone: <a href="tel:+966567034333">+966567034333</a></h2>
-    <form>
-        <label for="mainTitle">Title:</label> 
-        <input id="mainTitle" name="title" type="text">
+    <header>
+        <a href="index.html">Go Back</a>
+        <h2>Email: <a href = "mailto: ZiyadAlghanam">ZiyadAlghanam@gmail.com</a></h2>
+        <h2>Phone: <a href="tel:+966567034333">+966567034333</a></h2>
+    </header>
+    <form action="submition.html" autocomplete="on">
+        <label for="subject">Subject:</label> 
+        <input id="subject" name="subject" type="text" placeholder="Enter Subject">
         <label for="email">Email:</label> 
-        <input id="email" name="email" type="email">
+        <input id="email" name="email" type="email" placeholder="email@adress.com">
+        <br>
+        <label for="selectedTitle">Name:</label> 
+        <input list="title" name="title" id="selectedTitle" placeholder="Title">
+        <input id="fName" name="fName" type="text" placeholder="First Name">
+        <input id="lName" name="lName" type="text" placeholder="Last Name">
         <br>
         <label for="message">Message:</label>
-        <input id="message" name="message" type="text">
-        <button>submit</button>
+        <input id="message" name="message" type="text" placeholder="Your message here" autocomplete="off">
+        <input type="submit" value="Send">
     </form>
+    <datalist id="title">
+        <option value="Mr.">
+        <option value="Ms.">
+        <option value="Mrs.">
+      </datalist>
 </body>
 </html>
