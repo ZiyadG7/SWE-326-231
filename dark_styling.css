@@ -1,7 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 body {background-color: black;
         color: white;
+        font-family: 'Inter';
     }
-h1, h2 {
+    thead{
+        text-transform: uppercase;
+    }
+    a{
+        color: royalblue;
+    }
+/* h1, h2 {
     font-family: Arial Black;
     text-align: center;
     }
@@ -18,7 +27,7 @@ a:visited{
 }
 footer{
     font-family: sans-serif;
-}
+} */
 /*
 to get childern of a node you use the parent space child
 eg. nav li targets every list item of child nav*/
