@@ -21,15 +21,53 @@ body {background-color: black;
         text-transform: uppercase;
         background-color: white;
     }
-/* h1, h2 {
-    font-family: Arial Black;
-    text-align: center;
+    h2{
+        font-family: sans-serif;
     }
-    
-p {
-    font-family: comic sans MS, Arial;
-    text-align: center;
+    h1, h2, h3, h4, h5, h6{
+        text-transform: capitalize;
     }
+
+    h2 + p::first-letter {
+        font-size: x-large;
+      }
+      tr:hover{
+        color: black;
+        background-color: cornsilk;
+      }
+      nav li{
+        display: inline;
+      }
+      nav ul li:first-child {
+        text-decoration: underline royalblue;
+      }
+      nav ul li a{
+        text-decoration: none;
+        cursor: none;
+      }
+      table tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+        color: black;
+      }
+      ::selection{
+        color: white;
+        background-color: #322073;
+      }
+      body a:not(.nav):hover {
+        cursor: pointer;
+      }
+      input {
+        height: 20px;
+      }
+      
+      input[type="text"] {
+        border-color: lightgray;
+      }
+      
+      input[name="message"]{
+        height: 50px;
+      }
+/*
 a{
     color: royalblue;
 }
