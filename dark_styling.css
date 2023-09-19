@@ -10,6 +10,17 @@ body {background-color: black;
     a{
         color: royalblue;
     }
+    .top{
+        color: #322073;
+        background-color: white;
+    }
+    em{
+        color: #4f29d9;
+    }
+    #the_most_important{
+        text-transform: uppercase;
+        background-color: white;
+    }
 /* h1, h2 {
     font-family: Arial Black;
     text-align: center;
