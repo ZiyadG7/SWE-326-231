@@ -46,6 +46,8 @@
     <h1 id="turn">
         Now it's is X turn
     </h1>
+    <button id="reset-btn">Reset</button>
+
 
     <!-- Board -->
     <div class="board">
@@ -118,17 +120,71 @@
                     }
                     return matrix;
                 }
-                arrayToMatrix(arr,3);
+                matrix = arrayToMatrix(arr,3);
+
                 //check for win or draw
+                function checkWin(letter) {
+                    // Check rows
+                    for (let i = 0; i < matrix.length; i++) {
+                        if (
+                            matrix[i][0].innerText === letter &&
+                            matrix[i][1].innerText === letter &&
+                            matrix[i][2].innerText === letter
+                        ) {
+                            return true;
+                        }
+                    }
+
+                    // Check columns
+                    for (let i = 0; i < matrix[0].length; i++) {
+                        if (
+                            matrix[0][i].innerText === letter &&
+                            matrix[1][i].innerText === letter &&
+                            matrix[2][i].innerText === letter
+                        ) {
+                            return true;
+                        }
+                    }
+
+                    // Check diagonals
+                    if (
+                        matrix[0][0].innerText === letter &&
+                        matrix[1][1].innerText === letter &&
+                        matrix[2][2].innerText === letter
+                    ) {
+                        return true;
+                    }
+
+                    if (
+                        matrix[0][2].innerText === letter &&
+                        matrix[1][1].innerText === letter &&
+                        matrix[2][0].innerText === letter
+                    ) {
+                        return true;
+                    }
+
+                    return false;
+                }
+        
+                //change title to reflect who win or draw if its draw
                 
-                //change title
                 
-                //update score
+                
                 // document.getElementById("score").innerText = `X (`${x_wins} '-' ${o_wins} 'O'
+                
                 document.getElementById("turn").innerText = `Now it's ${letter} turn`
+                
+                function resetGame() {
+                    for (let cell of arr) {
+                        cell.innerText = '';
+                        cell.style.backgroundColor = 'beige';
+                    }
+                }
+                document.getElementById("reset-btn").addEventListener("click", resetGame);
+
 
             }
-
+            
         </script>
     </div>
 </body>
