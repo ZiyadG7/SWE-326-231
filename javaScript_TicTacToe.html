@@ -120,10 +120,10 @@
                     }
                     return matrix;
                 }
-                matrix = arrayToMatrix(arr,3);
 
                 //check for win or draw
                 function checkWin(letter) {
+                    matrix = arrayToMatrix(arr,3);
                     // Check rows
                     for (let i = 0; i < matrix.length; i++) {
                         if (
@@ -167,7 +167,7 @@
                 }
         
                 //change title to reflect who win or draw if its draw
-                
+             
                 
                 
                 // document.getElementById("score").innerText = `X (`${x_wins} '-' ${o_wins} 'O'

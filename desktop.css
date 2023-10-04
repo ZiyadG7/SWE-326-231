@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@media screen and (min-width: 769px) {
 
     /* img{
       
@@ -24,7 +25,7 @@
 
     header{
       display: flex;
-      padding: 3rem;
+      padding: 1rem;
       justify-content: space-between;
       align-items: center;
       align-self: stretch;
@@ -33,7 +34,7 @@
     #Main_Title{
       color: var(--gray-dark-900, #F9FAFB);
       font-family: Inter;
-      font-size: 4.5rem;
+      font-size: 3rem;
       font-style: normal; 
       font-weight: 700;
       line-height: 36px;
@@ -59,10 +60,10 @@
       float: right;
     }
     button{
-      font-size: 3rem;
+      font-size: 0.75rem;
       color: rgba(255, 255, 255, 0.805);
-      width: 10rem;
-      height: 7rem;
+      width: 4rem;
+      height: 2.2rem;
       background-color: #4f29d9; 
     }
     button:hover{
@@ -70,7 +71,7 @@
       transition: background-color 1s ease-in;
     }
     .menu_icon {
-      width: 4rem;
+      width: 1.75rem;
       position: relative;
       cursor: pointer;
     }
@@ -107,10 +108,10 @@
     body {
       background-color: black;
       color: #D1D5DB;
-      font-size: 2rem;
+      font-size: 1rem;
       font-family: Inter;
       font-weight: 400;
-      line-height: 4rem;
+      line-height: 1rem;
       word-wrap: break-word;
         }
     thead{
@@ -138,7 +139,7 @@
     }
 
     h2 + p::first-letter {
-      font-size: 3rem;
+      font-size: 2rem;
       }
       /* article{
         display: block;
@@ -200,3 +201,4 @@ footer{
 /*
 to get childern of a node you use the parent space child
 eg. nav li targets every list item of child nav*/
+}
