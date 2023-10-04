@@ -40,7 +40,7 @@
     #Main_Title{
       color: var(--gray-dark-900, #F9FAFB);
       font-family: Inter;
-      font-size: 3rem;
+      font-size: 5rem;
       font-style: normal; 
       font-weight: 700;
       line-height: 36px;
@@ -63,21 +63,37 @@
       flex: 1 0 0;
     }
     #rightbox{
-      float: right;
+        
+        float: right;
+    }
+    #leftbox{
+        float: left;
     }
     button{
-      font-size: 0.75rem;
+      font-size: 1.75rem;
       color: rgba(255, 255, 255, 0.805);
-      width: 4rem;
-      height: 2.2rem;
+      width: 8rem;
+      height: 4.5rem;
       background-color: #4f29d9; 
+    }
+    #flexbox h2 {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    } 
+    #flexbox{
+        text-align: center;
+    } 
+
+    #flexbox > ul{
+        display: inline-block;
     }
     button:hover{
       background-color: #542c75; 
       transition: background-color 1s ease-in;
     }
     .menu_icon {
-      width: 1.75rem;
+      width: 3rem;
       position: relative;
       cursor: pointer;
     }
@@ -117,7 +133,7 @@
       font-size: 1rem;
       font-family: Inter;
       font-weight: 400;
-      line-height: 1rem;
+      line-height: 2.52rem;
       word-wrap: break-word;
         }
     thead{
@@ -126,19 +142,10 @@
     a{
         color: royalblue;
     }
-    /* .top{
-        color: #322073;
-        background-color: white;
-    } */
-    /* em{
-        color: #4f29d9;
-    } */
-    /* #the_most_important{
-        text-transform: uppercase;
-        background-color: white;
-    } */
+
     h2{
         font-family: sans-serif;
+
     }
     h1, h2, h3, h4, h5, h6{
         text-transform: capitalize;
