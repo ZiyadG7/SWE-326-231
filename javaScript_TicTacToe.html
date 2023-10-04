@@ -70,6 +70,10 @@
             // controll turns 
             let turn = 0
             let letter = "X"
+            function resetLetter(){
+                turn =0;
+                letter = 'X'
+            }
 
             // add letters
             document.querySelector(".board").addEventListener("click", play_turn)
@@ -103,9 +107,8 @@
                     letter = "O"
                 }
 
-                //check for win or draw and declare it if exists
+                document.getElementById("turn").innerText = `Now it's ${letter} turn`
 
-                //create a matrix from an array
                 arr = document.getElementsByClassName("cell")
                 function arrayToMatrix(arr, elementsInRow){
                     var matrix = [], i, k;
@@ -167,14 +170,17 @@
                 }
         
                 //change title to reflect who win or draw if its draw
-             
+                if(checkWin(letter) == true){
+                    document.getElementById("turn").innerText = `${letter} Won!!`
+                    resetGame()
+                }
                 
                 
                 // document.getElementById("score").innerText = `X (`${x_wins} '-' ${o_wins} 'O'
                 
-                document.getElementById("turn").innerText = `Now it's ${letter} turn`
                 
                 function resetGame() {
+                    resetLetter
                     for (let cell of arr) {
                         cell.innerText = '';
                         cell.style.backgroundColor = 'beige';
