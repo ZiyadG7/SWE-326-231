@@ -113,10 +113,10 @@
     body {
       background-color: black;
       color: #D1D5DB;
-      font-size: 7rem;
+      font-size: 2rem;
       font-family: Inter;
       font-weight: 400;
-      line-height: 4rem;
+      line-height: 2rem;
       word-wrap: break-word;
         }
     thead{
