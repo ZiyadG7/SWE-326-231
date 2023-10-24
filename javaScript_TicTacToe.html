@@ -102,6 +102,8 @@
         });
 
         restartButton.addEventListener('click', restartGame);
+        
+        cells[5].focus();
 
         function handleClick(e) {
             const cell = e.target;
@@ -191,6 +193,7 @@
         }
 
         function restartGame() {
+            cells[5].focus();
             gameActive = true;
             cells.forEach(cell => {
                 cell.innerText = '';
