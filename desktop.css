@@ -11,7 +11,7 @@
         opacity: 0.5;
     } */
     
-    #loader {
+    /* #loader {
       border: 16px solid #f3f3f3; 
       border-top: 16px solid #3498db; 
       border-radius: 50%;
@@ -27,7 +27,7 @@
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
-    } 
+    }  */
 
     header{
       display: flex;
@@ -76,16 +76,16 @@
       height: 4.5rem;
       background-color: #4f29d9; 
     }
-    #flexbox h2 {
+    .flexbox h2 {
         align-items: center;
         display: flex;
         justify-content: center;
     } 
-    #flexbox{
+    .flexbox{
         text-align: center;
     } 
 
-    #flexbox > ul{
+    .flexbox > ul{
         display: inline-block;
     }
     button:hover{

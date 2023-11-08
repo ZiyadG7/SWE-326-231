@@ -4,20 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tic Tac Toe</title>
     <style>
-        body{
+        body {
+            color: white;
+            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            background-color: black;
+        }
+
+        .board {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
             height: 100vh;
         }
+
         .cell {
+            color: black;
             font-family: sans-serif;
             font-size: larger;
             font-weight: bolder;
-            background-color: beige;
+            background-color: white;
             width: 100px;
             height: 100px;
             border: 1px solid black;
@@ -26,7 +39,8 @@
             justify-content: center;
             align-items: center;
         }
-        .cell:hover{
+
+        .cell:hover {
             background-color: blanchedalmond;
         }
 
@@ -37,162 +51,193 @@
 </head>
 
 <body>
-    <h1>
-        Score
-    </h1>
-    <h2 id="score"s>
-        X (0-0) O
-    </h2>
-    <h1 id="turn">
-        Now it's is X turn
-    </h1>
-    <button id="reset-btn">Reset</button>
-
+    <h1>Score</h1>
+    <h2 id="score">X (0-0) O</h2>
+    <h1 id="turn">Now it's X's turn</h1>
+    <button id="restart-btn">Restart</button>
 
     <!-- Board -->
     <div class="board">
         <div class="row">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
+            <div class="cell" tabindex="1"></div>
+            <div class="cell" tabindex="2"></div>
+            <div class="cell" tabindex="3"></div>
         </div>
         <div class="row">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
+            <div class="cell" tabindex="4"></div>
+            <div class="cell" tabindex="5"></div>
+            <div class="cell" tabindex="6"></div>
         </div>
         <div class="row">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
+            <div class="cell" tabindex="7"></div>
+            <div class="cell" tabindex="8"></div>
+            <div class="cell" tabindex="9"></div>
         </div>
-        <script>
-            // controll turns 
-            let turn = 0
-            let letter = "X"
-            function resetLetter(){
-                turn =0;
-                letter = 'X'
-            }
-
-            // add letters
-            document.querySelector(".board").addEventListener("click", play_turn)
-            
-            function play_turn(e) {
-
-                var x_wins = 0;
-                var o_wins = 0;
-                //get target
-                cell = e.target
-                
-                //check if letter already exists
-                if (cell.innerText == 'X' || cell.innerText == 'O'){
-                    return;
-                }
-                //add the letter
-                textElement = document.createTextNode(`${letter}`)
-                cell.appendChild(textElement)
-
-                //change cell color
-                cell.style.backgroundColor= 'blanchedalmond';
-
-                //change turn
-                turn = (turn + 1) % 2;
-                console.log(turn)
-
-                //change letter
-                if (turn == 0) {
-                    letter = "X"
-                } else {
-                    letter = "O"
-                }
-
-                document.getElementById("turn").innerText = `Now it's ${letter} turn`
-
-                arr = document.getElementsByClassName("cell")
-                function arrayToMatrix(arr, elementsInRow){
-                    var matrix = [], i, k;
-                    for (i = 0, k = -1; i < arr.length; i++) {
-                        if (i % 3 === 0) {
-                            k++;
-                            matrix[k] = [];
-                        }
-
-                        matrix[k].push(arr[i]);
-                        
-                    }
-                    return matrix;
-                }
-
-                //check for win or draw
-                function checkWin(letter) {
-                    matrix = arrayToMatrix(arr,3);
-                    // Check rows
-                    for (let i = 0; i < matrix.length; i++) {
-                        if (
-                            matrix[i][0].innerText === letter &&
-                            matrix[i][1].innerText === letter &&
-                            matrix[i][2].innerText === letter
-                        ) {
-                            return true;
-                        }
-                    }
-
-                    // Check columns
-                    for (let i = 0; i < matrix[0].length; i++) {
-                        if (
-                            matrix[0][i].innerText === letter &&
-                            matrix[1][i].innerText === letter &&
-                            matrix[2][i].innerText === letter
-                        ) {
-                            return true;
-                        }
-                    }
-
-                    // Check diagonals
-                    if (
-                        matrix[0][0].innerText === letter &&
-                        matrix[1][1].innerText === letter &&
-                        matrix[2][2].innerText === letter
-                    ) {
-                        return true;
-                    }
-
-                    if (
-                        matrix[0][2].innerText === letter &&
-                        matrix[1][1].innerText === letter &&
-                        matrix[2][0].innerText === letter
-                    ) {
-                        return true;
-                    }
-
-                    return false;
-                }
-        
-                //change title to reflect who win or draw if its draw
-                if(checkWin(letter) == true){
-                    document.getElementById("turn").innerText = `${letter} Won!!`
-                    resetGame()
-                }
-                
-                
-                // document.getElementById("score").innerText = `X (`${x_wins} '-' ${o_wins} 'O'
-                
-                
-                function resetGame() {
-                    resetLetter()
-                    for (let cell of arr) {
-                        cell.innerText = '';
-                        cell.style.backgroundColor = 'beige';
-                    }
-                }
-                document.getElementById("reset-btn").addEventListener("click", resetGame);
-
-
-            }
-            
-        </script>
     </div>
+
+    <script>
+        let xTurn = true;
+        let gameActive = true;
+        let xScore = 0;
+        let oScore = 0;
+        const winningCombinations = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        const cells = document.querySelectorAll('.cell');
+        const scoreElement = document.getElementById('score');
+        const turnElement = document.getElementById('turn');
+        const restartButton = document.getElementById('restart-btn');
+
+        cells.forEach(cell => {
+            cell.addEventListener('click', handleClick);
+            cell.addEventListener('keydown', handleKeyPress);
+        });
+
+        restartButton.addEventListener('click', restartGame);
+        
+        cells[5].focus();
+
+        function handleClick(e) {
+            const cell = e.target;
+            const currentTurn = xTurn ? 'X' : 'O';
+            if (gameActive && cell.innerText === '') {
+                placeLetter(cell, currentTurn);
+                if (checkWin(currentTurn)) {
+                    endGame(currentTurn);
+                } else if (checkDraw()) {
+                    endGame();
+                } else {
+                    swapTurns();
+                }
+            }
+        }
+
+        function handleKeyPress(e) {
+            const cell = e.target;
+            const keyCode = e.keyCode || e.which;
+
+            if (keyCode === 13) { // Enter key
+                const currentTurn = xTurn ? 'X' : 'O';
+                if (gameActive && cell.innerText === '') {
+                    placeLetter(cell, currentTurn);
+                    if (checkWin(currentTurn)) {
+                        endGame(currentTurn);
+                    } else if (checkDraw()) {
+                        endGame();
+                    } else {
+                        swapTurns();
+                    }
+                }
+            } else if (keyCode === 37) { // Left arrow key
+                moveLeft(cell);
+            } else if (keyCode === 38) { // Up arrow key
+                moveUp(cell);
+            } else if (keyCode === 39) { // Right arrow key
+                moveRight(cell);
+            } else if (keyCode === 40) { // Down arrow key
+                moveDown(cell);
+            }
+        }
+
+        function placeLetter(cell, currentTurn) {
+            cell.innerText = currentTurn;
+            cell.removeEventListener('click', handleClick);
+            cell.addEventListener('keydown', handleKeyPress);
+        }
+
+        function swapTurns() {
+            xTurn = !xTurn;
+            const currentTurn = xTurn ? 'X' : 'O';
+            turnElement.innerText = `Now it's ${currentTurn}'s turn`;
+        }
+
+        function checkWin(currentTurn) {
+            return winningCombinations.some(combination => {
+                return combination.every(index => {
+                    return cells[index].innerText === currentTurn;
+                });
+            });
+        }
+
+        function checkDraw() {
+            return Array.from(cells).every(cell => {
+                return cell.innerText !== '';
+            });
+        }
+
+        function endGame(winningPlayer = null) {
+            gameActive = false;
+            if (winningPlayer) {
+                if (winningPlayer === 'X') {
+                    xScore++;
+                } else {
+                    oScore++;
+                }
+                scoreElement.innerText = `X (${xScore}-${oScore}) O`;
+                turnElement.innerText = `Player ${winningPlayer} won!`;
+            } else {
+                turnElement.innerText = "It's a draw!";
+            }
+            cells.forEach(cell => {
+                cell.removeEventListener('click', handleClick);
+                cell.removeEventListener('keydown', handleKeyPress);
+            });
+        }
+
+        function restartGame() {
+            cells[5].focus();
+            gameActive = true;
+            cells.forEach(cell => {
+                cell.innerText = '';
+                cell.addEventListener('click', handleClick);
+                cell.addEventListener('keydown', handleKeyPress);
+            });
+            turnElement.innerText = "Now it's X's turn";
+        }
+
+        function moveLeft(cell) {
+            const currentIndex = Array.from(cells).indexOf(cell);
+
+            if (currentIndex > 0) {
+                cells[currentIndex - 1].focus();
+            }
+        }
+
+        function moveUp(cell) {
+            const currentIndex = Array.from(cells).indexOf(cell);
+
+            if (currentIndex >= 3) {
+                cells[currentIndex - 3].focus();
+            }
+        }
+
+        function moveRight(cell) {
+            const currentIndex = Array.from(cells).indexOf(cell);
+
+            if (currentIndex < cells.length - 1) {
+                cells[currentIndex + 1].focus();
+            }
+        }
+
+        function moveDown(cell) {
+            const currentIndex = Array.from(cells).indexOf(cell);
+
+            if (currentIndex < cells.length - 3) {
+                cells[currentIndex + 3].focus();
+            }
+        }
+        alert(`Keyboard Controls:
+    - Use the arrow keys to navigate between cells.
+    - Press Enter to make a move in the selected cell.`);
+    </script>
 </body>
 
 </html>
